@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryScapeBuilder - Arcade Theme</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #0a0a0a;
+    color: #e6e6e6;
+  }
+
+  .container {
+    text-align: center;
+    padding: 100px 0;
+  }
+
+  .arcade-heading {
+    font-size: 48px;
+    letter-spacing: 8px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+    color: #ff6600;
+  }
+
+  .buttons {
+    margin-top: 40px;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8b00ff;
+    color: #fff;
+    font-size: 18px;
+    border: 2px solid #af60ff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .button:hover {
+    background-color: #af60ff;
+    transform: scale(1.05);
+  }
+
+  .about-container {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #0a0a0a;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .about-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ff6600;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+  .about-text {
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #e6e6e6;
+  }
+
+  .input-field {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ff6600;
+    width: 300px;
+    box-sizing: border-box;
+    background-color: #9f49e6;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .input-field::placeholder {
+    color: #af60ff;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1 class="arcade-heading">StoryScapeBuilder</h1>
+    <div class="buttons">
+      <button class="button" onmouseover="playHoverSound()">Start Building</button>
+      <button class="button" onmouseover="playHoverSound()" onclick="showInputField()">Join Game</button>
+    </div>
+    <div id="inputFieldContainer"></div>
+  </div>
+
+  <div class="about-container">
+    <h2 class="about-heading">About the Game</h2>
+    <p class="about-text">Welcome to StoryScapeBuilder! Dive into the realm of interactive storytelling and unleash your creativity. Craft intricate narratives, shape thrilling choices, and share your one-of-a-kind tales. Let's turn learning into an adventure!</p>
+  </div>
+
+  <audio id="hoverSound">
+    <source src="file:///C:/Users/jit_b/Downloads/button-124476.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <footer style="background-color: #0a0a0a; color: #e6e6e6; text-align: center; padding: 10px; font-size: 12px; font-family: 'VT323', monospace;">
+    <p>&copy; 2023 StoryScapeBuilder. Powered by RetroMagic. Submission To DualHacks 2023</p>
+  </footer>
+
+  <script>
+    function playHoverSound() {
+      var hoverSound = document.getElementById('hoverSound');
+      hoverSound.currentTime = 0;
+      hoverSound.play();
+    }
+    var inputFieldAdded = false;
+
+    function showInputField() {
+      if (!inputFieldAdded) {
+        var inputFieldContainer = document.getElementById('inputFieldContainer');
+
+        var inputField = document.createElement('input');
+        inputField.setAttribute('type', 'text');
+        inputField.setAttribute('placeholder', 'Room Code');
+        inputField.setAttribute('maxlength', '5'); // Max length of 5 characters
+        inputField.classList.add('input-field');
+
+        inputFieldContainer.appendChild(inputField);
+
+        inputFieldAdded = true;
+      }
+    }
+  </script>
+</body>
+</html>
